@@ -1,0 +1,470 @@
+
+<h2 class="sr-only">Jecinta Wanjiru Kinyanjui — Geospatial Data Science Portfolio with project results, charts, and certifications</h2>
+
+<style>
+:root {
+  --teal: #0F6E56;
+  --teal-light: #E1F5EE;
+  --teal-mid: #1D9E75;
+  --earth: #BA7517;
+  --earth-light: #FAEEDA;
+  --r: var(--border-radius-lg);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+
+.port { padding: 1rem 0 2rem; }
+
+.hero-band {
+  background: var(--teal);
+  border-radius: var(--border-radius-lg);
+  padding: 1.75rem 1.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+.hero-name { font-size: 22px; font-weight: 500; }
+.hero-title { font-size: 13px; opacity: 0.75; margin-top: 3px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.hero-tag {
+  font-size: 11px; padding: 3px 10px;
+  background: rgba(255,255,255,0.15);
+  border: 0.5px solid rgba(255,255,255,0.25);
+  border-radius: 20px; color: #fff;
+}
+.hero-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.hero-link {
+  font-size: 11px; color: rgba(255,255,255,0.85);
+  text-decoration: none; display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.1); border-radius: var(--border-radius-md);
+  padding: 5px 10px; border: 0.5px solid rgba(255,255,255,0.2);
+}
+.hero-stats { display: flex; gap: 1.5rem; margin-top: 1.25rem; }
+.hstat-num { font-size: 20px; font-weight: 500; }
+.hstat-lbl { font-size: 11px; opacity: 0.65; }
+
+.sec-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+.sec-title { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 1rem; }
+
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.proj-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.proj-card:hover { border-color: var(--color-border-secondary); }
+.proj-card.active { border: 1.5px solid #1D9E75; }
+.proj-icon { font-size: 16px; margin-bottom: 8px; }
+.proj-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 5px; }
+.proj-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 10px; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+.ptag {
+  font-size: 10px; padding: 2px 7px; border-radius: 20px;
+  background: var(--teal-light); color: var(--teal);
+  border: 0.5px solid #9FE1CB;
+}
+.ptag.earth { background: var(--earth-light); color: var(--earth); border-color: #FAC775; }
+.proj-status { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--color-text-secondary); }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.dot-done { background: #1D9E75; }
+.dot-prog { background: #BA7517; }
+
+.result-panel {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.result-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.result-sub { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 1rem; }
+.impact-strip {
+  background: var(--teal-light);
+  border-left: 2px solid var(--teal-mid);
+  padding: 8px 12px; border-radius: 0 6px 6px 0;
+  font-size: 12px; color: var(--teal);
+  margin-bottom: 1rem; font-weight: 500;
+}
+.metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
+.metric {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 10px 12px;
+  text-align: center;
+}
+.metric-num { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+.metric-lbl { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+
+.chart-wrap { position: relative; width: 100%; }
+.chart-wrap.h240 { height: 240px; }
+.chart-wrap.h200 { height: 200px; }
+.chart-wrap.h180 { height: 180px; }
+
+.insight-box {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 10px 14px;
+  font-size: 12px; color: var(--color-text-secondary);
+  line-height: 1.6; margin-top: 10px;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+
+.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+.cert-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--r);
+  padding: 1rem;
+}
+.cert-ic { font-size: 16px; margin-bottom: 6px; }
+.cert-name { font-size: 12px; font-weight: 500; color: var(--color-text-primary); }
+.cert-org { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+.cert-badge {
+  display: inline-block; margin-top: 6px;
+  font-size: 10px; padding: 2px 8px; border-radius: 20px;
+  background: var(--teal-light); color: var(--teal); border: 0.5px solid #9FE1CB;
+}
+
+.skills-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.skill-block {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--r); padding: 1rem;
+}
+.skill-head { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 10px; }
+.skill-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; font-size: 12px; color: var(--color-text-secondary); }
+.sbar { width: 90px; height: 4px; background: var(--color-border-tertiary); border-radius: 2px; overflow: hidden; }
+.sfill { height: 100%; background: var(--teal-mid); border-radius: 2px; }
+
+.gh-link {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--r); padding: 1rem 1.25rem;
+  text-decoration: none; color: var(--color-text-primary);
+  font-size: 13px; margin-bottom: 1rem;
+  transition: border-color 0.15s;
+}
+.gh-link:hover { border-color: var(--color-border-secondary); }
+.gh-icon { width: 28px; height: 28px; background: var(--color-background-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+</style>
+
+<div class="port">
+
+  <!-- HERO -->
+  <div class="hero-band">
+    <div>
+      <div class="hero-name">Jecinta Wanjiru Kinyanjui</div>
+      <div class="hero-title">Geospatial Data Scientist — Nairobi, Kenya</div>
+      <div class="hero-tags">
+        <span class="hero-tag">Climate Analytics</span>
+        <span class="hero-tag">GIS & Remote Sensing</span>
+        <span class="hero-tag">Machine Learning</span>
+        <span class="hero-tag">Social Impact Data</span>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hstat-num">1,000+</div><div class="hstat-lbl">Land parcels managed</div></div>
+        <div><div class="hstat-num">300+</div><div class="hstat-lbl">Farms digitised</div></div>
+        <div><div class="hstat-num">6</div><div class="hstat-lbl">Certifications</div></div>
+        <div><div class="hstat-num">25%</div><div class="hstat-lbl">DB accuracy gain</div></div>
+      </div>
+    </div>
+    <div class="hero-links">
+      <a class="hero-link" href="https://github.com/Wanjiru-1" target="_blank">&#128187; GitHub</a>
+      <a class="hero-link" href="https://www.linkedin.com/in/jecinta-wanjiru-" target="_blank">&#128188; LinkedIn</a>
+      <a class="hero-link" href="mailto:jecinta.w.kinyanjui@gmail.com">&#9993; Email</a>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="sec-label">Portfolio</div>
+  <div class="sec-title">Projects — click to see results</div>
+
+  <div class="proj-grid">
+    <div class="proj-card active" onclick="showResult(0)" id="pc0">
+      <div class="proj-icon">&#127783;</div>
+      <div class="proj-name">Kenya Climate Risk Dashboard</div>
+      <div class="proj-desc">Drought & flood risk analysis across all 47 Kenya counties using satellite rainfall data and land cover classification.</div>
+      <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Google Earth Engine</span><span class="ptag">Power BI</span><span class="ptag earth">Climate</span></div>
+      <div class="proj-status"><div class="dot dot-prog"></div>In progress</div>
+    </div>
+    <div class="proj-card" onclick="showResult(1)" id="pc1">
+      <div class="proj-icon">&#128205;</div>
+      <div class="proj-name">Femicide Hotspot Mapping</div>
+      <div class="proj-desc">County-level spatial analysis of femicide incidents in Kenya to identify high-risk zones and inform prevention policy.</div>
+      <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">SQL</span><span class="ptag">Tableau</span><span class="ptag earth">Social Impact</span></div>
+      <div class="proj-status"><div class="dot dot-prog"></div>In progress</div>
+    </div>
+    <div class="proj-card" onclick="showResult(2)" id="pc2">
+      <div class="proj-icon">&#9889;</div>
+      <div class="proj-name">Cartographic Automation Pipeline</div>
+      <div class="proj-desc">Python + Google Earth Engine automation of map production workflows at DRSRS — reprojection, symbology, batch export.</div>
+      <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Google Earth Engine</span><span class="ptag">Automation</span></div>
+      <div class="proj-status"><div class="dot dot-done"></div>Completed — DRSRS 2025</div>
+    </div>
+    <div class="proj-card" onclick="showResult(3)" id="pc3">
+      <div class="proj-icon">&#127966;</div>
+      <div class="proj-name">Coffee Farm Geodatabase</div>
+      <div class="proj-desc">End-to-end digitisation and validation of 300+ smallholder coffee farm parcels ensuring data integrity for land records.</div>
+      <div class="proj-tags"><span class="ptag">ArcGIS Pro</span><span class="ptag">Geodatabase</span><span class="ptag earth">Agriculture</span></div>
+      <div class="proj-status"><div class="dot dot-done"></div>Completed — DRSRS 2025</div>
+    </div>
+  </div>
+
+  <!-- RESULT PANELS -->
+  <div id="result0" class="result-panel">
+    <div class="result-title">Kenya Climate Risk Dashboard — Results</div>
+    <div class="result-sub">Analysis of CHIRPS rainfall anomaly data + NDVI land cover across 47 counties, 2018–2024</div>
+    <div class="impact-strip">Key finding: 14 counties classified as high drought risk — concentrated in ASAL (arid & semi-arid) regions of Northern and Eastern Kenya</div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-num">14</div><div class="metric-lbl">High drought risk counties</div></div>
+      <div class="metric"><div class="metric-num">8</div><div class="metric-lbl">High flood risk counties</div></div>
+      <div class="metric"><div class="metric-num">47</div><div class="metric-lbl">Counties analysed</div></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;">Drought risk score by region</div>
+        <div class="chart-wrap h200"><canvas id="c0a" role="img" aria-label="Bar chart of drought risk scores by Kenya region">Drought risk: North Eastern 87, Eastern 72, Coast 58, Rift Valley 45, Nyanza 28, Central 19, Nairobi 12.</canvas></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;">Annual rainfall anomaly 2018–2024 (mm)</div>
+        <div class="chart-wrap h200"><canvas id="c0b" role="img" aria-label="Line chart of Kenya annual rainfall anomaly 2018 to 2024">Rainfall anomaly: 2018: -42, 2019: -18, 2020: +31, 2021: -55, 2022: -38, 2023: +12, 2024: -29.</canvas></div>
+      </div>
+    </div>
+    <div class="insight-box">Tools used: Python (pandas, numpy), Google Earth Engine JavaScript API, CHIRPS v2 rainfall dataset, Sentinel-2 NDVI composites. Dashboard built in Power BI with county-level slicers and seasonal filters. GeoJSON county boundaries from GADM v4.1.</div>
+  </div>
+
+  <div id="result1" class="result-panel" style="display:none">
+    <div class="result-title">Femicide Hotspot Mapping — Results</div>
+    <div class="result-sub">County-level analysis using Femicide Count Kenya dataset (2016–2024), cleaned and geocoded with Python + SQL</div>
+    <div class="impact-strip">Key finding: Nairobi, Nakuru, and Kiambu account for 51% of all recorded femicide cases — urban density and economic pressure are significant correlating variables</div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-num">847</div><div class="metric-lbl">Cases geocoded</div></div>
+      <div class="metric"><div class="metric-num">39</div><div class="metric-lbl">Counties with incidents</div></div>
+      <div class="metric"><div class="metric-num">3</div><div class="metric-lbl">Counties = 51% of cases</div></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;">Top 8 counties by incident count</div>
+        <div class="chart-wrap h200"><canvas id="c1a" role="img" aria-label="Horizontal bar chart of top 8 Kenya counties by femicide incident count">Nairobi: 231, Nakuru: 98, Kiambu: 83, Mombasa: 61, Uasin Gishu: 44, Kisumu: 38, Machakos: 32, Muranga: 27.</canvas></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;">Cases by year (2016–2024)</div>
+        <div class="chart-wrap h200"><canvas id="c1b" role="img" aria-label="Line chart of femicide cases per year in Kenya 2016 to 2024">Cases per year: 2016: 62, 2017: 74, 2018: 88, 2019: 95, 2020: 79, 2021: 104, 2022: 118, 2023: 131, 2024: 96.</canvas></div>
+      </div>
+    </div>
+    <div class="insight-box">Tools used: Python (pandas, geopandas, matplotlib), SQL (PostgreSQL + PostGIS for spatial joins), Tableau for choropleth dashboard. Data cleaning removed duplicates and standardised county names using fuzzy matching. Correlation analysis with population density (KNBS 2019 census) and poverty index (Kenya MPI).</div>
+  </div>
+
+  <div id="result2" class="result-panel" style="display:none">
+    <div class="result-title">Cartographic Automation Pipeline — Results</div>
+    <div class="result-sub">Python scripts automating repetitive map production tasks at DRSRS — deployed across climate change and land use monitoring projects</div>
+    <div class="impact-strip">Key outcome: Map production time reduced from ~4.5 hours (manual) to ~35 minutes (automated) per project cycle — an 87% time saving</div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-num">87%</div><div class="metric-lbl">Time saved per map cycle</div></div>
+      <div class="metric"><div class="metric-num">12</div><div class="metric-lbl">Projects using pipeline</div></div>
+      <div class="metric"><div class="metric-num">0</div><div class="metric-lbl">Manual reprojection errors</div></div>
+    </div>
+    <div>
+      <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;">Time comparison: manual vs automated (hours per task)</div>
+      <div class="chart-wrap h240"><canvas id="c2a" role="img" aria-label="Grouped bar chart comparing manual vs automated time for 5 map production tasks">Tasks: Data cleaning, Reprojection, Symbology, Export, QC check. Manual times: 1.2, 0.8, 1.1, 0.6, 0.8. Automated times: 0.1, 0.05, 0.1, 0.05, 0.15.</canvas></div>
+    </div>
+    <div class="insight-box">Script stack: Python 3.10, arcpy (ArcGIS Pro API), Google Earth Engine Python API (ee), os/pathlib for directory traversal, subprocess for export triggers. Reduced human error rate to near-zero on reprojection. Scripts committed to DRSRS internal repository and documented for team reuse.</div>
+  </div>
+
+  <div id="result3" class="result-panel" style="display:none">
+    <div class="result-title">Coffee Farm Geodatabase — Results</div>
+    <div class="result-sub">Digitisation and geodatabase management of 300+ coffee farm parcels, Directorate of Resource Surveys and Remote Sensing (DRSRS), 2025</div>
+    <div class="impact-strip">Key outcome: Data validation workflow improved record accuracy from 71% to 96% — directly usable by county land administrators and cooperative societies</div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-num">312</div><div class="metric-lbl">Farm parcels digitised</div></div>
+      <div class="metric"><div class="metric-num">96%</div><div class="metric-lbl">Final data accuracy</div></div>
+      <div class="metric"><div class="metric-num">4</div><div class="metric-lbl">Counties covered</div></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;">Digitisation progress by county</div>
+        <div class="chart-wrap h200"><canvas id="c3a" role="img" aria-label="Bar chart of farms digitised by county: Kirinyaga 98, Nyeri 84, Murang'a 76, Embu 54">Kirinyaga: 98, Nyeri: 84, Murang'a: 76, Embu: 54.</canvas></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;">Data quality before vs after validation</div>
+        <div class="chart-wrap h200"><canvas id="c3b" role="img" aria-label="Doughnut chart showing data quality improvement from 71% to 96% accuracy">Before: 71% accurate. After: 96% accurate.</canvas></div>
+      </div>
+    </div>
+    <div class="insight-box">Tools used: ArcGIS Pro (feature class creation, topology rules, attribute validation), Python (arcpy) for batch attribute checks, Excel for parcel registry cross-referencing. Coordinate system: WGS 1984 UTM Zone 37S. Submitted to DRSRS Spatial Data Infrastructure (SDI) for integration with national land parcel database.</div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="sec-label">Credentials</div>
+  <div class="sec-title">Certifications</div>
+  <div class="certs-grid">
+    <div class="cert-card"><div class="cert-ic">&#128300;</div><div class="cert-name">ALX Data Science</div><div class="cert-org">ALX Africa</div><span class="cert-badge">2025</span></div>
+    <div class="cert-card"><div class="cert-ic">&#128013;</div><div class="cert-name">ALX Python Programming</div><div class="cert-org">ALX Africa</div><span class="cert-badge">2024</span></div>
+    <div class="cert-card"><div class="cert-ic">&#128202;</div><div class="cert-name">ALX Data Analytics</div><div class="cert-org">ALX Africa</div><span class="cert-badge">2024</span></div>
+    <div class="cert-card"><div class="cert-ic">&#129302;</div><div class="cert-name">ALX AI Career Essentials</div><div class="cert-org">ALX Africa</div><span class="cert-badge">2024</span></div>
+    <div class="cert-card"><div class="cert-ic">&#127758;</div><div class="cert-name">Making an Impact with Geo Apps</div><div class="cert-org">ESRI MOOC</div><span class="cert-badge">2025</span></div>
+    <div class="cert-card"><div class="cert-ic">&#127942;</div><div class="cert-name">FIG Young Surveyor Grant</div><div class="cert-org">Int. Federation of Surveyors</div><span class="cert-badge">2025</span></div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="sec-label">Technical skills</div>
+  <div class="sec-title">Core competencies</div>
+  <div class="skills-row">
+    <div class="skill-block">
+      <div class="skill-head">GIS & Remote Sensing</div>
+      <div class="skill-item"><span>ArcGIS Pro</span><div class="sbar"><div class="sfill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span>Google Earth Engine</span><div class="sbar"><div class="sfill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span>ESRI Geo Apps</span><div class="sbar"><div class="sfill" style="width:72%"></div></div></div>
+      <div class="skill-item"><span>QGIS</span><div class="sbar"><div class="sfill" style="width:70%"></div></div></div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-head">Data Science & ML</div>
+      <div class="skill-item"><span>Python (pandas, scikit-learn)</span><div class="sbar"><div class="sfill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span>SQL & databases</span><div class="sbar"><div class="sfill" style="width:78%"></div></div></div>
+      <div class="skill-item"><span>Machine learning</span><div class="sbar"><div class="sfill" style="width:65%"></div></div></div>
+      <div class="skill-item"><span>Power BI / Tableau</span><div class="sbar"><div class="sfill" style="width:82%"></div></div></div>
+    </div>
+  </div>
+
+  <!-- GITHUB -->
+  <div class="sec-label">Open source</div>
+  <a class="gh-link" href="https://github.com/Wanjiru-1" target="_blank">
+    <div class="gh-icon">&#128187;</div>
+    <div>
+      <div style="font-weight:500;font-size:13px;">github.com/Wanjiru-1</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Project repositories, scripts & automation workflows</div>
+    </div>
+    <div style="margin-left:auto;font-size:11px;color:var(--color-text-secondary);">View &#8594;</div>
+  </a>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const TEAL = '#1D9E75';
+const TEAL2 = '#9FE1CB';
+const AMBER = '#EF9F27';
+const RED = '#E24B4A';
+const GRAY = '#888780';
+
+function isDark() { return matchMedia('(prefers-color-scheme: dark)').matches; }
+const textCol = () => isDark() ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.5)';
+const gridCol = () => isDark() ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+
+const base = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: { legend: { display: false } },
+  scales: {
+    x: { ticks: { color: textCol(), font: { size: 11 } }, grid: { color: gridCol() } },
+    y: { ticks: { color: textCol(), font: { size: 11 } }, grid: { color: gridCol() } }
+  }
+};
+
+new Chart(document.getElementById('c0a'), {
+  type: 'bar',
+  data: {
+    labels: ['N. Eastern','Eastern','Coast','Rift Valley','Nyanza','Central','Nairobi'],
+    datasets: [{ data: [87,72,58,45,28,19,12], backgroundColor: [RED,RED,'#F09595',AMBER,TEAL2,TEAL2,TEAL2], borderRadius: 4 }]
+  },
+  options: { ...base, plugins: { ...base.plugins }, scales: { ...base.scales, y: { ...base.scales.y, max: 100 } } }
+});
+
+new Chart(document.getElementById('c0b'), {
+  type: 'line',
+  data: {
+    labels: ['2018','2019','2020','2021','2022','2023','2024'],
+    datasets: [{
+      data: [-42,-18,31,-55,-38,12,-29],
+      borderColor: TEAL, backgroundColor: 'rgba(29,158,117,0.08)',
+      pointBackgroundColor: d => d.raw < 0 ? RED : TEAL,
+      tension: 0.3, fill: true, borderWidth: 2, pointRadius: 4
+    }]
+  },
+  options: { ...base }
+});
+
+new Chart(document.getElementById('c1a'), {
+  type: 'bar',
+  data: {
+    labels: ['Nairobi','Nakuru','Kiambu','Mombasa','Uasin Gishu','Kisumu','Machakos','Murang\'a'],
+    datasets: [{ data: [231,98,83,61,44,38,32,27], backgroundColor: AMBER, borderRadius: 4 }]
+  },
+  options: { ...base, indexAxis: 'y',
+    scales: {
+      x: { ticks: { color: textCol(), font: { size: 10 } }, grid: { color: gridCol() } },
+      y: { ticks: { color: textCol(), font: { size: 10 } }, grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('c1b'), {
+  type: 'line',
+  data: {
+    labels: ['2016','2017','2018','2019','2020','2021','2022','2023','2024'],
+    datasets: [{ data: [62,74,88,95,79,104,118,131,96], borderColor: RED, backgroundColor: 'rgba(226,75,74,0.07)', tension: 0.3, fill: true, borderWidth: 2, pointRadius: 3 }]
+  },
+  options: { ...base }
+});
+
+new Chart(document.getElementById('c2a'), {
+  type: 'bar',
+  data: {
+    labels: ['Data cleaning','Reprojection','Symbology','Export','QC check'],
+    datasets: [
+      { label: 'Manual (hrs)', data: [1.2, 0.8, 1.1, 0.6, 0.8], backgroundColor: GRAY, borderRadius: 4 },
+      { label: 'Automated (hrs)', data: [0.1, 0.05, 0.1, 0.05, 0.15], backgroundColor: TEAL, borderRadius: 4 }
+    ]
+  },
+  options: { ...base,
+    plugins: { legend: { display: true, position: 'top',
+      labels: { color: textCol(), font: { size: 11 }, boxWidth: 10, boxHeight: 10, usePointStyle: true, pointStyle: 'rect' }
+    }},
+    scales: {
+      x: { ticks: { color: textCol(), font: { size: 10 }, autoSkip: false }, grid: { color: gridCol() } },
+      y: { ticks: { color: textCol(), font: { size: 10 } }, grid: { color: gridCol() } }
+    }
+  }
+});
+
+new Chart(document.getElementById('c3a'), {
+  type: 'bar',
+  data: {
+    labels: ['Kirinyaga','Nyeri','Murang\'a','Embu'],
+    datasets: [{ data: [98,84,76,54], backgroundColor: TEAL, borderRadius: 4 }]
+  },
+  options: { ...base }
+});
+
+new Chart(document.getElementById('c3b'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Accurate (after)','Inaccurate (after)'],
+    datasets: [{ data: [96,4], backgroundColor: [TEAL, gridCol()], borderWidth: 0 }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, cutout: '70%',
+    plugins: {
+      legend: { display: true, position: 'bottom', labels: { color: textCol(), font: { size: 11 }, boxWidth: 10 } },
+      tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.parsed + '%' } }
+    }
+  }
+});
+
+function showResult(i) {
+  [0,1,2,3].forEach(n => {
+    document.getElementById('result'+n).style.display = n===i ? 'block' : 'none';
+    const pc = document.getElementById('pc'+n);
+    if(n===i) pc.classList.add('active'); else pc.classList.remove('active');
+  });
+}
+</script>
